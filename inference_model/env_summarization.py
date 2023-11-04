@@ -40,7 +40,8 @@ def main(context_list: list) -> list:
         print("TOGETHER_API not found in the .env file.")
 
     sys_prompts = {
-       "env_impact": "Your mission is to provide accurate and concise summaries of top 4 environmental reports related to companies environmental footprint" ,
+       "env_impact": "Your mission is to provide accurate and concise summaries for recycling, CO2 emissions, and renewable energy in bullet points" ,
+        #  "bullet_point": "Your mission is to provide accurate and concise summaries of top 4 environmental reports related to companies environmental footprints in 4 bullet points."
     #    "water_impact": "Your task is to deliver precise and succinct summaries of water environmental reports that pertain to a company's efforts in promoting water conservation."
     }
 
