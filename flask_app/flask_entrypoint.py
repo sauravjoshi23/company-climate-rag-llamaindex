@@ -20,7 +20,7 @@ def home():
 @app.route("/getScorecard", methods=["GET", "POST"])
 def getScorecard():
     if request.method == 'POST':
-        # These would be your dynamic strings you want to inject into the HTML
+        # TODO: These would be your dynamic strings you want to inject into the HTML
         summary = "Today we're discussing the best vegan recipes...Ian"
         good_for_climate = "Ever feel bad for turning down invites?..."
         bad_for_climate = [
@@ -30,7 +30,7 @@ def getScorecard():
             "identify points of agreement and disagreement",
             "create a culture of positivity"
         ]
-        print(request.form.get('company_input'))
+
         return render_template(
             'report.html',
             company_name=request.form.get('company_input'),
@@ -38,9 +38,6 @@ def getScorecard():
             good_for_climate=good_for_climate,
             bad_for_climate=bad_for_climate
         )
-        # TODO: GET PDF FROM COMPANY NAME WITH LLAMA INDEX HERE
-        # return Response(request.form.get('company_input'))
-
     else:
         return Response("INVALID REQUEST")
 
