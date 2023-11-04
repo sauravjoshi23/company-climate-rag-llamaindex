@@ -20,23 +20,29 @@ def home():
 @app.route("/getScorecard", methods=["GET", "POST"])
 def getScorecard():
     if request.method == 'POST':
+        # TODO: IMPORT AND FIX FUNCTINO NAME
+        sc_data = TODOFUCNTIONS(request.form.get('company_input'))
         # TODO: These would be your dynamic strings you want to inject into the HTML
-        summary = "Today we're discussing the best vegan recipes...Ian"
-        good_for_climate = "Ever feel bad for turning down invites?..."
-        bad_for_climate = [
-            "go on a walk",
-            "remember that challenging times will pass",
-            "listen carefully",
-            "identify points of agreement and disagreement",
-            "create a culture of positivity"
-        ]
-
+        sc_data = {
+            'summary': "Today we're discussing the best vegan recipes...Ian",
+            'good_for_climate': "Ever feel bad for turning down invites?...",
+            'bad_for_climate': [
+                "go on a walk",
+                "remember that challenging times will pass",
+                "listen carefully",
+                "identify points of agreement and disagreement",
+                "create a culture of positivity"
+            ]
+        }
+        if sc_data is None:
+            return Response("Company not found")
+            
         return render_template(
             'report.html',
             company_name=request.form.get('company_input'),
-            summary=summary,
-            good_for_climate=good_for_climate,
-            bad_for_climate=bad_for_climate
+            summary=sc_data['summary'],
+            good_for_climate=sc_data['good_for_climate'],
+            bad_for_climate=sc_data['bad_for_climate']
         )
     else:
         return Response("INVALID REQUEST")
