@@ -1,10 +1,6 @@
 # import requirements needed
 from flask import Flask, Response, render_template, request, send_file
 
-# TODO: PROBABLY REMOVE
-import io
-import requests as req_lib
-
 from utils import get_base_url
 
 # setup the webserver
@@ -24,15 +20,27 @@ def home():
 @app.route("/getScorecard", methods=["GET", "POST"])
 def getScorecard():
     if request.method == 'POST':
+        # These would be your dynamic strings you want to inject into the HTML
+        summary = "Today we're discussing the best vegan recipes...Ian"
+        good_for_climate = "Ever feel bad for turning down invites?..."
+        bad_for_climate = [
+            "go on a walk",
+            "remember that challenging times will pass",
+            "listen carefully",
+            "identify points of agreement and disagreement",
+            "create a culture of positivity"
+        ]
+        print(request.form.get('company_input'))
+        return render_template(
+            'report.html',
+            company_name=request.form.get('company_input'),
+            summary=summary,
+            good_for_climate=good_for_climate,
+            bad_for_climate=bad_for_climate
+        )
         # TODO: GET PDF FROM COMPANY NAME WITH LLAMA INDEX HERE
         # return Response(request.form.get('company_input'))
 
-        # TMP CODE
-        r = req_lib.get('https://arxiv.org/pdf/2212.10543.pdf', allow_redirects=True)
-        return send_file(
-                     io.BytesIO(r.content),
-                     attachment_filename='report.pdf',
-                     mimetype='application/pdf')
     else:
         return Response("INVALID REQUEST")
 
