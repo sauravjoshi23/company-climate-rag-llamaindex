@@ -10,7 +10,7 @@
     <div class="newsletter">
         <div class="header">
             <h1>{{ company_name }}</h1>
-            <p>The most extroverted news you'll find.</p>
+            <p>Company environmental scorecard.</p>
         </div>
         <div class="section">
             <h2>Summary</h2>
@@ -23,13 +23,11 @@
         <div class="section">
             <h2>Bad for Climate</h2>
             <ul>
-                {% for item in bad_for_climate %}
-                    <li>{{ item }}</li>
-                {% endfor %}
+                <p>{{ bad_for_climate }}</p>
             </ul>
         </div>
         <div class="footer">
-            <p>Follow us for more @social_news</p>
+            <p>Check out our code: <a href="https://github.com/sauravjoshi23/company-climate-rag-llamaindex">Github Repo</a> </p>
         </div>
     </div>
 </body>

@@ -34,8 +34,8 @@ def data_retriever(company_name: str) -> dict:
     # # TODO
         
     context_list = []
-    context_list.append(source_text[:6000])
-    # print(context_list)
+    context_list.append(source_text[:5000])
+    print(context_list)
     outputs = summarizer(context_list) # return array of length 3
     output_dict = {}
     prompts_name = ['summary', 'good_for_climate', 'bad_for_climate']
