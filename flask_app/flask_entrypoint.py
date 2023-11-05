@@ -1,8 +1,8 @@
 # import requirements needed
 from flask import Flask, Response, render_template, request, send_file
-from data_retriever import *
 
 from utils import get_base_url
+from data_retriever import *
 
 # setup the webserver
 # port may need to be changed if there are multiple flask servers running on same server
