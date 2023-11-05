@@ -27,7 +27,7 @@ def getScorecard():
         
         sc_data = data_retriever(company_name)
 
-        print(sc_data)
+        # print(sc_data)
         # sc_data = {
         #     'summary': "Today we're discussing the best vegan recipes...Ian",
         #     'good_for_climate': "Ever feel bad for turning down invites?...",
