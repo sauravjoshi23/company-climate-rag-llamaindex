@@ -1,5 +1,6 @@
 from llama_index import download_loader
 from env_summarization import *
+from data_layer import *
 
 WikipediaReader = download_loader("WikipediaReader")
 loader = WikipediaReader()
@@ -23,18 +24,19 @@ def save_data(file_name: str, data: str):
 
 def data_retriever(company_name: str) -> dict:
 
-    source_text = read_data_source(company_name)
-    if not source_text:
-        return None # When data is not found
+    # source_text = read_data_source(company_name)
+    # if not source_text:
+        # return None # When data is not found
+    source_text = data_layer(company_name)
     
     # Store data for debugging reasons
-    save_data("wikipedia_sample_data/" + company_name, source_text)
+    # save_data("wikipedia_sample_data/" + company_name, source_text)
     
     # CALL MONGO DB AND LAMMA-INDEX:
     # # TODO
         
     context_list = []
-    context_list.append(source_text[:5000])
+    context_list.append(source_text)
     print(context_list)
     outputs = summarizer(context_list) # return array of length 3
     output_dict = {}

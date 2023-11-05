@@ -24,7 +24,9 @@ def getScorecard():
         company_name = request.form.get('company_input')
         if not company_name:
             return Response("No input")
+        
         sc_data = data_retriever(company_name)
+
         print(sc_data)
         # sc_data = {
         #     'summary': "Today we're discussing the best vegan recipes...Ian",
