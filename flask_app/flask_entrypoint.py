@@ -21,7 +21,7 @@ def home():
 def getScorecard():
     if request.method == 'POST':
         # TODO: IMPORT AND FIX FUNCTINO NAME
-        sc_data = TODOFUCNTIONS(request.form.get('company_input'))
+        # sc_data = TODOFUCNTIONS(request.form.get('company_input'))
         # TODO: These would be your dynamic strings you want to inject into the HTML
         sc_data = {
             'summary': "Today we're discussing the best vegan recipes...Ian",
@@ -36,7 +36,7 @@ def getScorecard():
         }
         if sc_data is None:
             return Response("Company not found")
-            
+
         return render_template(
             'report.html',
             company_name=request.form.get('company_input'),

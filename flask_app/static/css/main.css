@@ -829,6 +829,15 @@ button {
   padding: 15px;
 }
 
+#proj_title {
+  font-weight: bold;
+  font-size: 64px;
+  position: absolute;
+  top: 15%;
+  justify-self: center;
+  color:#9fe1b7;
+}
+
 .s130 form {
   width: 100%;
   max-width: 790px;
@@ -923,7 +932,7 @@ button {
 
 .s130 form .info {
   font-size: 15px;
-  color: #ccc;
+  color: #9fe1b7;
   padding-left: 26px;
 }
 
