@@ -1,5 +1,6 @@
 # import requirements needed
 from flask import Flask, Response, render_template, request, send_file
+from data_retriever import *
 
 from utils import get_base_url
 
@@ -20,20 +21,22 @@ def home():
 @app.route("/getScorecard", methods=["GET", "POST"])
 def getScorecard():
     if request.method == 'POST':
-        # TODO: IMPORT AND FIX FUNCTINO NAME
-        # sc_data = TODOFUCNTIONS(request.form.get('company_input'))
-        # TODO: These would be your dynamic strings you want to inject into the HTML
-        sc_data = {
-            'summary': "Today we're discussing the best vegan recipes...Ian",
-            'good_for_climate': "Ever feel bad for turning down invites?...",
-            'bad_for_climate': [
-                "go on a walk",
-                "remember that challenging times will pass",
-                "listen carefully",
-                "identify points of agreement and disagreement",
-                "create a culture of positivity"
-            ]
-        }
+        company_name = request.form.get('company_input')
+        if not company_name:
+            return Response("No input")
+        sc_data = data_retriever(company_name)
+        print(sc_data)
+        # sc_data = {
+        #     'summary': "Today we're discussing the best vegan recipes...Ian",
+        #     'good_for_climate': "Ever feel bad for turning down invites?...",
+        #     'bad_for_climate': [
+        #         "go on a walk",
+        #         "remember that challenging times will pass",
+        #         "listen carefully",
+        #         "identify points of agreement and disagreement",
+        #         "create a culture of positivity"
+        #     ]
+        # }
         if sc_data is None:
             return Response("Company not found")
 
