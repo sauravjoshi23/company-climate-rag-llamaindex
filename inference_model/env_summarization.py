@@ -34,13 +34,15 @@ def summarize_text(prompt: str) -> str:
     return output['output']['choices'][0]['text']
 
 
-def main(context_list: list) -> list:
+def summarizer(context_list: list) -> list:
 
     if not TOGETHER_API_KEY:
         print("TOGETHER_API not found in the .env file.")
 
     sys_prompts = {
-       "env_impact": "Your mission is to provide accurate and concise summaries for recycling, CO2 emissions, and renewable energy in bullet points" ,
+        "summary": "Provide a two-sentence summary of the company.",
+       "good_env_impact": "Your mission is to provide accurate and concise summaries for recycling, CO2 emissions, and renewable energy" ,
+       "bad_env_impact": "Your mission is to provide accurate and concise summaries for only environmentally unfriendly activities" ,
         #  "bullet_point": "Your mission is to provide accurate and concise summaries of top 4 environmental reports related to companies environmental footprints in 4 bullet points."
     #    "water_impact": "Your task is to deliver precise and succinct summaries of water environmental reports that pertain to a company's efforts in promoting water conservation."
     }
@@ -67,7 +69,7 @@ if __name__ == '__main__':
 
     # File
     # Open the .txt file for reading
-    with open('wikipedia_data_sample/apple.txt', 'r') as file:
+    with open('wikipedia_sample_data/apple.txt', 'r') as file:
         # Read the entire content of the file into a string
         file_contents = file.read()
 
@@ -75,7 +77,7 @@ if __name__ == '__main__':
     context_list = []
     context_list.append(file_contents)
 
-    outputs = main(context_list)
+    outputs = summarizer(context_list)
     for output in outputs:
         print(output)
     
